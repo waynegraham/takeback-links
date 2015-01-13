@@ -1,0 +1,25 @@
+GIT
+  remote: https://github.com/waynegraham/url_expander.git
+  revision: e25d6fdd82218202fda32f6be4c11c71a5c25d73
+  branch: feature/ift
+  specs:
+    url_expander (0.1.5)
+      hpricot
+      httparty (>= 0.6.1)
+      json
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    hpricot (0.8.6)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    json (1.8.2)
+    multi_xml (0.5.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  url_expander!
