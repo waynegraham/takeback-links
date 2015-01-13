@@ -2,23 +2,30 @@ require 'csv'
 require 'pp'
 require 'url_expander'
 
-TWEET = "@konedriver: Did #UVA rapist exist? 
-http://t.co/fLyJ5cyV49 http://t.co/qjw9hFymuN 
+OUTPUT_DIR = 'links'
+INPUT_DIR  = 'data'
 
-No-there are no rapists at #UVA
-No one ever expelled !"
-
-links = []
-
-def find_links
+def find_links(tweet)
   regex = %r{http[s]?:\/\/(.+)}i
-  tweets = regex.match(TWEET)
+  #regex = %r'(http://t\.co(/[\w/]+))'
+  tweets = regex.match(tweet)
 
-  collection = tweets[0].split(' ')
+  collection = tweets.to_a
 
-  collection.each do |link|
-    pp UrlExpander::Client.expand(link)
+  unless collection.first.nil?
+    collection.each do |link|
+      begin
+        pp UrlExpander::Client.expand(link)
+      rescue
+      end
+    end
   end
 end
 
-find_links
+Dir.glob("#{INPUT_DIR}/*.csv").each do |file|
+  CSV.foreach(file) do |row|
+    find_links(row[3])
+  end
+end
+
+
