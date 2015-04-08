@@ -2,4 +2,7 @@
 source "https://rubygems.org"
 
 gem "url_expander"
-#gem "url_expander", :git => 'https://github.com/waynegraham/url_expander.git', :branch => 'feature/ift'
+gem "twitter"
+gem "dotenv"
+gem "mechanize"
+gem "awesome_print"
